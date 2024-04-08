@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, HostBinding} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import {TopBarComponent} from "./core-layout/top-bar/topBarComponent";

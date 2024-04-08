@@ -1,10 +1,14 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
+import {NavigationButtonComponent} from "../../components/navigation-button/navigationButtonComponent";
 
 @Component({
   selector: 'top-bar',
   templateUrl: './topBarComponent.html',
   styleUrls: ['./topBarComponent.scss'],
+  imports: [
+    NavigationButtonComponent
+  ],
   standalone: true
 })
 export class TopBarComponent implements OnInit, OnDestroy {
