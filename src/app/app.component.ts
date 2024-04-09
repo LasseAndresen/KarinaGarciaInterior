@@ -1,7 +1,7 @@
 import {Component, HostBinding} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import {TopBarComponent} from "./core-layout/top-bar/topBarComponent";
+import {TopBarComponent} from "./core-layout/header/topBarComponent";
 
 @Component({
   selector: 'app-root',

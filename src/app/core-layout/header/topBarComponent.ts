@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 import {NavigationButtonComponent} from "../../components/navigation-button/navigationButtonComponent";
 
 @Component({
-  selector: 'top-bar',
+  selector: 'page-header',
   templateUrl: './topBarComponent.html',
   styleUrls: ['./topBarComponent.scss'],
   imports: [
