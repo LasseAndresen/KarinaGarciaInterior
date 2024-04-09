@@ -14,3 +14,19 @@ header {
   font-size: 16px;
   text-transform: uppercase;
 }
+
+.mobileMenu {
+  position: absolute;
+  background: #a6a6a6;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 100%;
+  z-index: 1;
+  transition: transform 0.5s ease-in-out;
+  transform: translate(100%);
+}
+
+.mobileMenuActive {
+  transform: translate(0);
+}

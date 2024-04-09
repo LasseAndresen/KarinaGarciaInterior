@@ -1,4 +1,4 @@
-<header class="border-bottom border-black">
+<header class="position-relative border-bottom border-black">
   <div class="d-flex flex-row justify-content-between h-100 p-2">
     <div class="d-flex flex-row align-items-center" style="margin-left: 8vw" (click)="onLogoClick()">
 <!--      <img-->
@@ -7,12 +7,27 @@
 <!--      />-->
       <a class="title">Karina Garcia Interiors</a>
     </div>
-    <nav class="d-flex flex-row gap-5 align-items-center" style="margin-right: 8vw">
-      <navigation-button [title]="'Home'" [route]="'/home'"></navigation-button>
-      <navigation-button [title]="'Projects'" [route]="'/projects'"></navigation-button>
-      <navigation-button [title]="'Services'" [route]="'/services'"></navigation-button>
-      <navigation-button [title]="'About'" [route]="'/about'"></navigation-button>
-      <navigation-button [title]="'Contact'" [route]="'/contact'"></navigation-button>
+    <nav *ngIf="screenWidth > 768; else mobileMenu" class="d-flex flex-row gap-5 align-items-center" style="margin-right: 8vw">
+      <ng-container [ngTemplateOutlet]="navButtons"></ng-container>
     </nav>
+    <ng-template #mobileMenu>
+        <button *ngIf="!showMobileMenu" (click)="showMobileMenuClicked()">CLICK ME</button>
+        <section class="position-absolute mobileMenu p-5" [ngClass]="{mobileMenuActive: showMobileMenu}">
+            <button class="position-absolute" style="top: 10px; right: 10px" (click)="hideMobileMenuClicked()">
+                Close
+            </button>
+            <nav class="d-flex flex-column gap-3 align-items-start">
+                <ng-container [ngTemplateOutlet]="navButtons"></ng-container>
+            </nav>
+        </section>
+    </ng-template>
   </div>
 </header>
+
+<ng-template #navButtons>
+    <navigation-button [title]="'Home'" [route]="'/home'"></navigation-button>
+    <navigation-button [title]="'Projects'" [route]="'/projects'"></navigation-button>
+    <navigation-button [title]="'Services'" [route]="'/services'"></navigation-button>
+    <navigation-button [title]="'About'" [route]="'/about'"></navigation-button>
+    <navigation-button [title]="'Contact'" [route]="'/contact'"></navigation-button>
+</ng-template>
