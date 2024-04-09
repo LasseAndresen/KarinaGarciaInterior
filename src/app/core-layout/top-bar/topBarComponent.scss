@@ -1,6 +1,16 @@
 
-.top-bar {
+header {
   position: relative;
   width: 100%;
-  height: 81px;
+  height: 12vh;
+}
+
+.title {
+  font-weight: 700;
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+  font-family: termina;
+  font-size: 16px;
+  text-transform: uppercase;
 }

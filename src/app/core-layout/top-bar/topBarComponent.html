@@ -1,13 +1,13 @@
-<header class="top-bar border-bottom border-black">
-  <div class="d-flex flex-row justify-content-between p-2">
-    <div class="d-flex flex-row align-items-center mouse-hand" (click)="onLogoClick()">
-      <img
-        style="width: 64px; height: 64px"
-        src="{{logoSrc}}"
-      />
-      <span class="ms-2" style="font-weight: 700">Karina Garcia Interiors</span>
+<header class="border-bottom border-black">
+  <div class="d-flex flex-row justify-content-between h-100 p-2">
+    <div class="d-flex flex-row align-items-center" style="margin-left: 8vw" (click)="onLogoClick()">
+<!--      <img-->
+<!--        style="width: 64px; height: 64px"-->
+<!--        src="{{logoSrc}}"-->
+<!--      />-->
+      <a class="title">Karina Garcia Interiors</a>
     </div>
-    <nav class="d-flex flex-row gap-3 align-items-center me-2">
+    <nav class="d-flex flex-row gap-5 align-items-center" style="margin-right: 8vw">
       <navigation-button [title]="'Home'" [route]="'/home'"></navigation-button>
       <navigation-button [title]="'Projects'" [route]="'/projects'"></navigation-button>
       <navigation-button [title]="'Services'" [route]="'/services'"></navigation-button>
