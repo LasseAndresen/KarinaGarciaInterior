@@ -1,7 +1,9 @@
-import {Component, Input, OnInit, OnDestroy, afterNextRender, ChangeDetectorRef} from '@angular/core';
-import {fromEvent, Observable, Subscription, throttleTime} from 'rxjs';
+import {afterNextRender, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
+import {fromEvent, Subscription, throttleTime} from 'rxjs';
 import {NavigationButtonComponent} from "../../components/navigation-button/navigationButtonComponent";
 import {NgClass, NgIf, NgTemplateOutlet} from "@angular/common";
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {faBars, faXmark} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'page-header',
@@ -11,13 +13,18 @@ import {NgClass, NgIf, NgTemplateOutlet} from "@angular/common";
     NavigationButtonComponent,
     NgIf,
     NgTemplateOutlet,
-    NgClass
+    NgClass,
+    FontAwesomeModule
   ],
-  standalone: true
+  standalone: true,
 })
 export class TopBarComponent implements OnInit, OnDestroy {
   private _subscriptions: Subscription[] = [];
-  protected logoSrc: string = 'assets/Placeholder.png';
+
+  // Icons
+  protected faBars = faBars;
+  protected faClose = faXmark;
+
   protected showMobileMenu = false;
   protected mobileWidth = false;
 
@@ -25,8 +32,7 @@ export class TopBarComponent implements OnInit, OnDestroy {
 
     // Checks if screen size is less than 1024 pixels
     const checkScreenSize = () => {
-      this.mobileWidth = document.body.offsetWidth < 800;
-      console.log('mobileWidth: ', this.mobileWidth);
+      this.mobileWidth = document.body.offsetWidth < 900;
       this._cdf.detectChanges();
     };
 
@@ -50,9 +56,11 @@ export class TopBarComponent implements OnInit, OnDestroy {
 
   public showMobileMenuClicked() {
     this.showMobileMenu = true;
+    this._cdf.detectChanges();
   }
 
   public hideMobileMenuClicked() {
     this.showMobileMenu = false;
+    this._cdf.detectChanges();
   }
 }

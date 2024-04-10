@@ -30,3 +30,9 @@ header {
 .mobileMenuActive {
   transform: translate(0);
 }
+
+@media only screen and (max-width: 400px) {
+  .title {
+    font-size: 12px;
+  }
+}

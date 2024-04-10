@@ -13,3 +13,13 @@ body {
   font-weight: 300;
   font-style: normal;
 }
+
+button {
+  background-color: #0000;
+  background-image: none;
+  -webkit-tap-highlight-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+}

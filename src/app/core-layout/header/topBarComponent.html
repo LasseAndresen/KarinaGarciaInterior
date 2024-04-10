@@ -1,5 +1,5 @@
 <header class="position-relative border-bottom border-black">
-  <div class="d-flex flex-row justify-content-between h-100 p-2">
+  <div class="d-flex flex-row justify-content-between h-100 p-2 px-4">
     <div class="d-flex flex-row align-items-center" style="margin-left: 8vw" (click)="onLogoClick()">
 <!--      <img-->
 <!--        style="width: 64px; height: 64px"-->
@@ -11,10 +11,12 @@
       <ng-container [ngTemplateOutlet]="navButtons"></ng-container>
     </nav>
     <ng-template #mobileMenu>
-        <button *ngIf="!showMobileMenu" (click)="showMobileMenuClicked()">CLICK ME</button>
+        <button *ngIf="!showMobileMenu" (click)="showMobileMenuClicked()">
+            <fa-icon [icon]="faBars"></fa-icon>
+        </button>
         <section class="position-absolute mobileMenu p-5" [ngClass]="{mobileMenuActive: showMobileMenu}">
-            <button class="position-absolute" style="top: 10px; right: 10px" (click)="hideMobileMenuClicked()">
-                Close
+            <button class="position-absolute" style="top: 20px; right: 20px;" (click)="hideMobileMenuClicked()">
+                <fa-icon [icon]="faClose" [size]="'lg'"></fa-icon>
             </button>
             <nav class="d-flex flex-column gap-3 align-items-start">
                 <ng-container [ngTemplateOutlet]="navButtons"></ng-container>
