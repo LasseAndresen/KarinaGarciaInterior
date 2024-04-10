@@ -12,8 +12,14 @@
   }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1200px) {
   .button {
     font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .button {
+    font-size: 8px;
   }
 }

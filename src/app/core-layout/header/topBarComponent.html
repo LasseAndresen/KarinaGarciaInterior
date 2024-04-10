@@ -7,7 +7,7 @@
 <!--      />-->
       <a class="title">Karina Garcia Interiors</a>
     </div>
-    <nav *ngIf="screenWidth > 768; else mobileMenu" class="d-flex flex-row gap-5 align-items-center" style="margin-right: 8vw">
+    <nav *ngIf="!mobileWidth; else mobileMenu" class="d-flex flex-row gap-5 align-items-center" style="margin-right: 8vw">
       <ng-container [ngTemplateOutlet]="navButtons"></ng-container>
     </nav>
     <ng-template #mobileMenu>

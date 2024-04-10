@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, OnDestroy, afterNextRender} from '@angular/core';
+import {Component, Input, OnInit, OnDestroy, afterNextRender, ChangeDetectorRef} from '@angular/core';
 import {fromEvent, Observable, Subscription, throttleTime} from 'rxjs';
 import {NavigationButtonComponent} from "../../components/navigation-button/navigationButtonComponent";
 import {NgClass, NgIf, NgTemplateOutlet} from "@angular/common";
@@ -19,13 +19,16 @@ export class TopBarComponent implements OnInit, OnDestroy {
   private _subscriptions: Subscription[] = [];
   protected logoSrc: string = 'assets/Placeholder.png';
   protected showMobileMenu = false;
-  protected screenWidth = 800;
+  protected mobileWidth = false;
 
-  constructor(
-  ) {
+  constructor(private _cdf: ChangeDetectorRef) {
+
     // Checks if screen size is less than 1024 pixels
-    const checkScreenSize = () => {this.screenWidth = document.body.offsetWidth;
-      console.log('screenWidth: ' + this.screenWidth);}
+    const checkScreenSize = () => {
+      this.mobileWidth = document.body.offsetWidth < 800;
+      console.log('mobileWidth: ', this.mobileWidth);
+      this._cdf.detectChanges();
+    };
 
     afterNextRender(() => {
       // Run initial check
