@@ -1,0 +1,11 @@
+article {
+  padding-left: 7vw;
+  padding-right: 7vw
+}
+
+@media only screen and (max-width: 900px) {
+  .button {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
