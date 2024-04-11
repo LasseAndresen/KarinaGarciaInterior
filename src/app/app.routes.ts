@@ -9,5 +9,9 @@ export const routes: Routes = [
     {
         path: 'home',
         loadChildren: () => import('./pages/home-page/homePageModule').then(m => m.HomePageModule)
+    },
+    {
+        path: 'contact',
+        loadChildren: () => import('./pages/contact-page/contactPageModule').then(m => m.ContactPageModule)
     }
 ];
