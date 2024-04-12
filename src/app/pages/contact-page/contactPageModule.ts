@@ -2,7 +2,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {NgModule} from "@angular/core";
 import {ContactPageComponent} from "./contactPageComponent";
 import {FormsModule} from "@angular/forms";
-import {NgIf} from "@angular/common";
+import {NgClass, NgIf} from "@angular/common";
 
 const childRoutes: Routes = [
     {
@@ -14,7 +14,8 @@ const childRoutes: Routes = [
     imports: [
         RouterModule.forChild(childRoutes),
         FormsModule,
-        NgIf
+        NgIf,
+        NgClass
     ],
     exports: [RouterModule],
     declarations: [ContactPageComponent],
