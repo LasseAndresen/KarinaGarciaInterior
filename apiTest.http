@@ -1,0 +1,9 @@
+POST http://localhost:4000/submitContactForm
+Content-Type: application/json
+
+{
+  "firstName": "Test",
+  "lastName": "McTester",
+  "email": "test@tester.com",
+  "message": "I would like to test this endpoint."
+}
