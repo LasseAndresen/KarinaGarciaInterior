@@ -1,5 +1,7 @@
-import {Component, HostBinding} from "@angular/core";
+import {Component, HostBinding, ViewChild} from "@angular/core";
 import {environment} from "../../../environment";
+import {ContactForm} from "../../models/contactForm";
+import {NgForm} from "@angular/forms";
 
 @Component({
     selector: 'contact-page',
@@ -7,12 +9,11 @@ import {environment} from "../../../environment";
     styleUrls: ['contactPageComponent.scss'],
 })
 export class ContactPageComponent {
-    protected form = {
-        firstName: '',
-        lastName: '',
-        email: '',
-        message: ''};
+    protected form = new ContactForm();
     protected submitted = false;
+
+    @ViewChild('contactForm', {static: true})
+    private _contactForm: NgForm | undefined;
 
     @HostBinding() class = 'h-100 overflow-y-auto';
 
@@ -30,12 +31,8 @@ export class ContactPageComponent {
         })
             .then(() => {
                 this.submitted = true;
-                this.form = {
-                    firstName: '',
-                    lastName: '',
-                    email: '',
-                    message: ''
-                };
+                this.form = new ContactForm();
+                this._contactForm?.reset();
             })
             .catch(err => console.error(err));
     }

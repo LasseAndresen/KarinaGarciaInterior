@@ -5,11 +5,13 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 import bootstrap from './src/main.server';
 import bodyParser from "body-parser";
+import {EmailUtils} from "./src/utils/emailUtils";
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
   const server = express();
   server.use(bodyParser.json());
+  require("dotenv").config();
   const serverDistFolder = dirname(fileURLToPath(import.meta.url));
   const browserDistFolder = resolve(serverDistFolder, '../browser');
   const indexHtml = join(serverDistFolder, 'index.server.html');
@@ -23,7 +25,9 @@ export function app(): express.Express {
     const { firstName, lastName, email, message } = req.body;
     console.log('Submitting contract form data:', firstName, lastName, email, message);
 
-    res.status(200).send('Form submitted successfully!');
+    EmailUtils.sendEmail('lasse.andresen9@gmail.com', 'Test mail', 'Testing sending emails.').then(() => {
+      res.status(200).send('Form submitted successfully!');
+    });
   });
 
   // Example Express Rest API endpoints
