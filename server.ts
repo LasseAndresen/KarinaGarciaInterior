@@ -25,7 +25,9 @@ export function app(): express.Express {
     const { firstName, lastName, email, message } = req.body;
     console.log('Submitting contract form data:', firstName, lastName, email, message);
 
-    EmailUtils.sendEmail('lasse.andresen9@gmail.com', 'Test mail', 'Testing sending emails.').then(() => {
+    const name = firstName + ' ' + lastName;
+    const subject = 'Test mail from ' + name + ' (' + email + ')';
+    EmailUtils.sendEmail('karinamarinhogarcia@gmail.com', subject, message).then(() => {
       res.status(200).send('Form submitted successfully!');
     });
   });
