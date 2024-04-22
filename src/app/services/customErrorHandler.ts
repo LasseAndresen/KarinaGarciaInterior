@@ -3,14 +3,17 @@ import {environment} from "../../environment";
 
 export class CustomErrorHandler implements ErrorHandler {
   public handleError(error: Error): void {
-    // Do what you want here, but throw it so that it's visible on the console!
-    fetch(environment.apiUrl + '/logClientError', {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({error: this.getMessageFromError(error)}),
-    })
+    if (environment.localhost) {
+     throw error;
+    } else {
+      fetch(environment.apiUrl + '/logClientError', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({error: this.getMessageFromError(error)}),
+      })
+    }
   }
 
   private getMessageFromError(error: Error): string {
