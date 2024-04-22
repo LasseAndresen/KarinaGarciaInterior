@@ -5,8 +5,8 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 import bootstrap from './src/main.server';
 import bodyParser from "body-parser";
-import {EmailUtils} from "./src/utils/emailUtils";
-import {LoggingUtils} from "./src/utils/loggingUtils";
+import {EmailUtils} from "./src/serverUtils/emailUtils";
+import {LoggingUtils} from "./src/serverUtils/loggingUtils";
 
 
 // The Express app is exported so that it can be used by serverless Functions.
