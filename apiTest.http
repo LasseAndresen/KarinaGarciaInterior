@@ -7,3 +7,13 @@ Content-Type: application/json
   "email": "test@tester.com",
   "message": "I would like to test this endpoint."
 }
+
+###
+
+
+POST http://localhost:4000/logClientError
+Content-Type: application/json
+
+{
+  "error": "This is a test. Client log error occured."
+}

@@ -76,6 +76,25 @@
           },
           "defaultConfiguration": "development"
         },
+        "prerender": {
+          "builder": "@angular-devkit/build-angular:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "KarinaGarciaInterior:build:production",
+              "serverTarget": "KarinaGarciaInterior:server:production"
+            },
+            "development": {
+              "browserTarget": "KarinaGarciaInterior:build:development",
+              "serverTarget": "KarinaGarciaInterior:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {

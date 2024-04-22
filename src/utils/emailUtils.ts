@@ -1,28 +1,14 @@
 import {OAuth2Client} from "google-auth-library/build/src/auth/oauth2client";
 import {createTransport} from "nodemailer";
 import SMTPTransport from "nodemailer/lib/smtp-transport";
+import {LoggingUtils} from "./loggingUtils";
+import {OAuthUtils} from "./OAuthUtils";
 
 export class EmailUtils {
   private static async createTransporter() {
-    const oauth2Client = new OAuth2Client(
-      process.env['CLIENT_ID'],
-      process.env['CLIENT_SECRET'],
-      "https://developers.google.com/oauthplayground"
-    );
-    oauth2Client.setCredentials({
-      refresh_token: process.env['REFRESH_TOKEN']
-    });
+    const accessToken = await OAuthUtils.getAccessToken();
 
-    const accessToken = await new Promise((resolve, reject) => {
-      oauth2Client.getAccessToken((err, token) => {
-        if (err) {
-          throw err;
-          // reject("Failed to create access token :(");
-        }
-        resolve(token);
-      });
-    });
-
+    console.log('Creating transporter...');
     return createTransport(
       {
         service: 'gmail',
@@ -46,12 +32,16 @@ export class EmailUtils {
       subject: subject,
       text: text,
     };
+
+    console.log('Sending email...');
     transporter.sendMail(mailOptions,
-      function (err: any, data: any) {
+      function (err: Error | null, data: any) {
         if (err) {
-          console.log('Error Occurs');
+          let errorMessage = LoggingUtils.getMessageFromError(err);
+          errorMessage += '\nContent: ' + JSON.stringify(mailOptions);
+          LoggingUtils.logServer(errorMessage, 'ERROR');
         } else {
-          console.log('Email sent successfully');
+          LoggingUtils.logServer('Email sent successfully from ' + email, 'INFO');
         }
       });
   }
