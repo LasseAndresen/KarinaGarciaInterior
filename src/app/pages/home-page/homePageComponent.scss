@@ -1,11 +1,18 @@
-article {
-  padding-left: 7vw;
-  padding-right: 7vw
+h1 {
+  text-align: center;
+  font-size: 3vh;
 }
 
 @media only screen and (max-width: 900px) {
   .button {
     padding-left: 20px;
     padding-right: 20px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  article {
+    padding-left: 7vw;
+    padding-right: 7vw
   }
 }

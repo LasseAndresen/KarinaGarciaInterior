@@ -1,11 +1,16 @@
-<header class="position-relative border-bottom border-black">
+<header class="position-relative">
   <div class="d-flex flex-row justify-content-between h-100 p-2 px-4">
-    <div class="d-flex flex-row align-items-center" style="margin-left: 8vw" (click)="onLogoClick()">
+    <div class="d-flex flex-row align-items-center" style="margin-left: 2vw" (click)="onLogoClick()">
 <!--      <img-->
 <!--        style="width: 64px; height: 64px"-->
 <!--        src="{{logoSrc}}"-->
 <!--      />-->
-      <a class="title" href="/home">Karina Garcia Interiors</a>
+      <a class="title" href="/home">
+          <div class="d-flex flex-column">
+              <span>Karina Garcia</span>
+              <span class="align-self-end" style="font-size: 8px">Interiors</span>
+          </div>
+       </a>
     </div>
     <nav *ngIf="!mobileWidth; else mobileMenu" class="d-flex flex-row gap-5 align-items-center" style="margin-right: 8vw">
       <ng-container [ngTemplateOutlet]="navButtons"></ng-container>
