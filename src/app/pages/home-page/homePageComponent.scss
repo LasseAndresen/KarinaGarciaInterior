@@ -16,7 +16,7 @@ h1 {
   }
 }
 
-@media only screen and (min-width: 450px) {
+@media only screen and (min-width: 1200px) {
   article {
     padding-left: 7vw;
     padding-right: 7vw
@@ -48,11 +48,7 @@ h1 {
     justify-content: space-between;
   }
 
-  #firstSection > picture {
-    width: 50vw;
-  }
-
   #firstSection > picture > img {
-    width: 80vw;
+    height: 60vh;
   }
 }
