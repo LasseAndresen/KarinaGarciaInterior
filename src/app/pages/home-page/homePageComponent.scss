@@ -4,6 +4,11 @@ h1 {
   width: 360px;
 }
 
+#firstSection {
+  display: flex;
+  align-content: center;
+}
+
 @media only screen and (max-width: 900px) {
   .button {
     padding-left: 20px;
@@ -11,9 +16,43 @@ h1 {
   }
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 450px) {
   article {
     padding-left: 7vw;
     padding-right: 7vw
+  }
+}
+
+@media (orientation: portrait) {
+  #firstSection {
+    flex-direction: column;
+  }
+
+  #firstSection > picture {
+    width: 100%;
+  }
+
+  #firstSection > picture > img {
+    width: 100%;
+  }
+}
+
+@media (orientation: landscape) {
+  article {
+    margin-left: 10vw;
+    margin-right: 10vw;
+  }
+
+  #firstSection {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  #firstSection > picture {
+    width: 50vw;
+  }
+
+  #firstSection > picture > img {
+    width: 80vw;
   }
 }
